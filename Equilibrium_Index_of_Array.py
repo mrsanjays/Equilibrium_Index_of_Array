@@ -2,13 +2,14 @@ class Solution:
     @staticmethod
     def Equilibrium(array):
         n=len(array)
-        psum=[0]*n
-        psum[0]=array[0]
-        for i in range(1,n):
-            psum[i]=psum[i-1]+array[i]
-        for i in range(1,n):
-            if psum[i-1]==psum[n-1]-psum[i]:
+        lsum=0
+        totsum=0
+        for element in array: 
+            totsum+=element
+        for i in range(n):
+            if lsum==totsum-lsum-array[i]:
                 return i
+            lsum+=array[i]
         return -1
 """
 You are given an array A of integers of size N.
